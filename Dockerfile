@@ -20,6 +20,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o cursor2api-go .
 # 从一个非常轻量的 Alpine 镜像开始
 FROM alpine:latest
 
+# !! CORRECTION !!
 # 安装 ca-certificates, wget (用于 HEALTHCHECK), 和 nodejs (用于执行JS)
 RUN apk --no-cache add ca-certificates wget nodejs
 
@@ -51,4 +52,3 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 # 启动应用程序的命令
 CMD ["./cursor2api-go"]
-
